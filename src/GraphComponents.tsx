@@ -118,13 +118,7 @@ export const AxisComponent = ({
         className="axis-bottom"
         transform={`translate(${padding}, ${chartHeight + 15})`}
         ref={node => {
-          const [breakpointXLabel] = data.xAxisLabels
-            .filter(
-              (_: string, index: number) =>
-                !!pList[index] || (isInclusive && pList[index - 1] < vitalBreakpointVal && !pList[index + 1])
-            )
-            .reverse();
-          const xPAxis = d3AxisBottom(xPBand).tickValues([breakpointXLabel, '100 %']);
+          const xPAxis = d3AxisBottom(xPBand).tickValues(data.xAxisLabels);
 
           d3Select(node)
             .call(xPAxis as any)

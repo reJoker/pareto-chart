@@ -106,8 +106,6 @@ export class PanelDataController {
           xPercentage = xPercentage > 100 ? 100 : xPercentage;
           let percentage = (result?.p[i - 1] ? result.p[i - 1] : 0) + xPercentage;
           percentage = percentage > 100 ? 100 : percentage;
-          const xAxisLabels =
-            i === yValues.length - 1 ? `${Math.trunc(Math.ceil(percentage))} %` : `${percentage.toFixed(2)} %`;
           const tooltipLabel = `${xPercentage.toFixed(2)} %`;
 
           return {
@@ -116,7 +114,7 @@ export class PanelDataController {
             y: [...result.y, d.y],
             p: [...result.p, percentage],
             xP: [...result.xP, xPercentage],
-            xAxisLabels: [...result.xAxisLabels, xAxisLabels],
+            xAxisLabels: [...result.x, d.x],
             tooltipLabel: [...result.tooltipLabel, tooltipLabel],
           };
         },
